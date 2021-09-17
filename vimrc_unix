@@ -131,6 +131,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'ntpeters/vim-better-whitespace'
 	Plug 'junegunn/vim-easy-align'
 	Plug 'godlygeek/tabular'
+	Plug 'vim-scripts/VimIM'
+	Plug 'dongyuwei/vimim-data'
 
 
 call plug#end()
