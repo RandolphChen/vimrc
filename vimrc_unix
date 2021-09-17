@@ -130,6 +130,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'mg979/vim-visual-multi'
 	Plug 'ntpeters/vim-better-whitespace'
 	Plug 'junegunn/vim-easy-align'
+	Plug 'godlygeek/tabular'
 
 
 call plug#end()
