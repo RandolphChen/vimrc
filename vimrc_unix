@@ -1,0 +1,807 @@
+"--plugin functions"
+
+
+
+"----------------------------------------------------------------------------"
+
+"--plugin pre-setting"
+	"--sheerun/vim-polyglot"
+		set nocompatible
+
+"----------------------------------------------------------------------------"
+
+
+
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+	" Make sure you use single quotes
+	
+	" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+	"Plug 'junegunn/vim-easy-align'
+	"
+	"" Any valid git URL is allowed
+	"Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+	"
+	"" Multiple Plug commands can be written in a single line using | separators
+	"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+	"
+	"" On-demand loading
+	"Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+	"Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+	"
+	"" Using a non-master branch
+	"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+	"
+	"" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+	"Plug 'fatih/vim-go', { 'tag': '*' }
+	"
+	"" Plugin options
+	"Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+	"
+	"" Plugin outside ~/.vim/plugged with post-update hook
+	"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	"
+	"" Unmanaged plugin (manually installed and updated)
+	"Plug '~/my-prototype-plugin'
+	" Initialize plugin system
+	" InstallPlug
+	""Plug 'zxqfl/tabnine-vim'
+	"---------------------------------------------------"
+	""	Plug 'prabirshrestha/async.vim'
+	""	Plug 'prabirshrestha/asyncomplete.vim'
+	""	Plug 'prabirshrestha/vim-lsp'
+	""	Plug 'prabirshrestha/asyncomplete-lsp.vim'
+	""
+	""	Plug 'prabirshrestha/asyncomplete-file.vim'
+	"---------------------------------------------------"
+
+	" completion or sources(like dict)
+	Plug 'lervag/vimtex'
+	"Plug 'scrooloose/syntastic'
+	Plug 'neoclide/coc.nvim', {'branch':'release'}
+		" coc.nvim source extensions
+		Plug 'tjdevries/coc-zsh'
+	Plug 'skywind3000/vim-dict'
+	"Plug 'wannesm/wmgraphviz.vim'
+	Plug 'liuchengxu/graphviz.vim'
+	Plug 'skywind3000/vim-auto-popmenu'
+
+	" syntastic check
+	Plug 'dense-analysis/ale'
+
+	" syntax highlight
+	Plug 'sheerun/vim-polyglot'
+	Plug 'sersorrel/vim-lilypond'
+	Plug 'luochen1990/rainbow'
+	Plug 'mechatroner/rainbow_csv'
+	"Plug 'yggdroot/indentline'
+	Plug 'nathanaelkane/vim-indent-guides'
+
+	" code style or re-format
+	Plug 'jiangmiao/auto-pairs'
+	Plug 'tpope/vim-surround'
+	Plug 'FooSoft/vim-argwrap'
+
+	" move motion
+	Plug 'easymotion/vim-easymotion'
+	Plug 'haya14busa/incsearch.vim'
+	Plug 'haya14busa/incsearch-easymotion.vim'
+	Plug 'haya14busa/incsearch-fuzzy.vim'
+	Plug 'haya14busa/incsearch-migemo.vim'
+	Plug 'ludovicchabant/vim-gutentags'
+	Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+	Plug 'kshenoy/vim-signature'
+
+	" projects or files
+	Plug 'preservim/nerdtree'
+	Plug 'tpope/vim-classpath'
+
+	" tasks
+	Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+
+	" debug
+	"Plug 'puremourning/vimspector'
+	"Plug 'vim-vdebug/vdebug'
+
+	" appearances or themes
+	Plug 'morhetz/gruvbox'
+	Plug 'lifepillar/vim-gruvbox8'
+	Plug 'lifepillar/vim-colortemplate'
+	Plug 'lifepillar/vim-solarized8'
+	"Plug 'sainnhe/vim-color-forest-night'
+	"Plug 'kien/rainbow_parentheses.vim'
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	"Plug 'ryanoasis/vim-devicons'
+
+	" useful quick key mappings
+	Plug 'tpope/vim-unimpaired'
+	Plug 'tpope/vim-repeat'
+
+	" interesting tools
+	Plug 'gyim/vim-boxdraw'
+	Plug 'vim-scripts/DrawIt'
+	Plug 'Rykka/easydigraph.vim'
+	Plug 'skywind3000/quickmenu.vim'
+	Plug 'liuchengxu/vim-which-key'
+	Plug 'mg979/vim-visual-multi'
+	Plug 'ntpeters/vim-better-whitespace'
+
+	
+call plug#end()
+
+"--Plugin setting
+
+
+"--lifepillar/vim-solarized8"
+	"set background=dark
+	"colorscheme solarized8_high
+
+"--lifepillar/vim-gruvbox8"
+	set termguicolors
+	let g:gruvbox8_contrast_dark='soft'
+	colorscheme gruvbox8
+	set background=dark
+	highlight Normal
+
+"--morhetz/gruvbox"
+	"let g:gruvbox_contrast_dark = 'soft'
+	"colorscheme gruvbox
+	"set background=dark
+	"highlight Normal
+
+"--skywind3000/vim-auto-popmenu"
+	" 设定需要生效的文件类型，如果是 "*" 的话，代表所有类型
+	let g:apc_enable_ft = {'text':1, 'markdown':1, 'php':1}
+	"let g:apc_enable_ft = {'*':1}
+	" 设定从字典文件以及当前打开的文件里收集补全单词，详情看 ':help cpt'
+	set cpt=.,k,w,b
+	" 不要自动选中第一个选项。
+	set completeopt=menu,menuone,noselect
+	" 禁止在下方显示一些啰嗦的提示
+	set shortmess+=c
+
+""--scrooloose/syntastic"
+    "set statusline+=%#warningmsg#
+    "set statusline+=%{SyntasticStatuslineFlag()}
+    "set statusline+=%*
+
+    "let g:syntastic_always_populate_loc_list = 1
+    "let g:syntastic_auto_loc_list = 1
+    "let g:syntastic_check_on_open = 1
+    "let g:syntastic_check_on_wq = 0
+
+"--zxqfl/tabnine-vim"
+	"""解决与scrooloose/syntastic的兼容性 
+	""let g:ycm_show_diagnostics_ui = 0
+
+"--easymotion/vim-easymotion"
+	let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+	" <Leader>e{char} to move to {char}
+	map  <Leader>e <Plug>(easymotion-bd-f)
+	nmap <Leader>e <Plug>(easymotion-overwin-f)
+	
+	" s{char}{char} to move to {char}{char}
+	"nmap s <Plug>(easymotion-overwin-f2)
+	nmap s <Plug>(easymotion-overwin-f2)
+	
+	" Move to line
+	map <Leader>L <Plug>(easymotion-bd-jk)
+	nmap <Leader>L <Plug>(easymotion-overwin-line)
+	
+	" Move to word
+	map  <Leader>w <Plug>(easymotion-bd-w)
+	nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+	" hjkl motions
+	" EasyMotion can be configured to avoid repetitive use of the h j k and l keys.
+	map <Leader>l <Plug>(easymotion-lineforward)
+	map <Leader>j <Plug>(easymotion-j)
+	map <Leader>k <Plug>(easymotion-k)
+	map <Leader>h <Plug>(easymotion-linebackward)
+	
+	let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+
+	" makes EasyMotion work similarly to Vim's smartcase option for global searches.
+	let g:EasyMotion_smartcase = 1
+	" Easymotion can match multibyte Japanese characters with alphabetical
+	" input.
+	let g:EasyMotion_use_migemo = 1
+
+	" Bidirectional & within line 't' motion
+	omap t <Plug>(easymotion-bd-tl)
+	omap f <Plug>(easymotion-bd-fl)
+	nmap t <Plug>(easymotion-bd-tl)
+	nmap f <Plug>(easymotion-bd-fl)
+	vmap t <Plug>(easymotion-bd-tl)
+	vmap f <Plug>(easymotion-bd-fl)
+
+"--haya14busa/incsearch.vim"
+	map /  <Plug>(incsearch-forward)
+	map ?  <Plug>(incsearch-backward)
+	map g/ <Plug>(incsearch-stay)
+
+	" :h g:incsearch#auto_nohlsearch
+	set hlsearch
+	let g:incsearch#auto_nohlsearch = 1
+	map n  <Plug>(incsearch-nohl-n)
+	map N  <Plug>(incsearch-nohl-N)
+	map *  <Plug>(incsearch-nohl-*)
+	map #  <Plug>(incsearch-nohl-#)
+	map g* <Plug>(incsearch-nohl-g*)
+	map g# <Plug>(incsearch-nohl-g#)
+	
+	"" :h incsearch-config-converters no regexp search
+	"function! s:noregexp(pattern) abort
+	"	  return '\V' . escape(a:pattern, '\')
+	"endfunction
+
+	"function! s:config() abort
+	"    return {'converters': [function('s:noregexp')]}
+	"endfunction
+
+	"noremap <silent><expr> z/ incsearch#go(<SID>config())
+
+"--haya14busa/incsearch-fuzzy.vim"
+	"" fuzzy search
+	"map z/ <Plug>(incsearch-fuzzy-/)
+	"map z? <Plug>(incsearch-fuzzy-?)
+	"map zg/ <Plug>(incsearch-fuzzy-stay)
+
+	"" fuzzyspell search; it uses spell feature in Vim
+	"map z/ <Plug>(incsearch-fuzzyspell-/)
+	"map z? <Plug>(incsearch-fuzzyspell-?)
+	"map zg/ <Plug>(incsearch-fuzzyspell-stay)
+	
+	" Use both fuzzy & fuzzyspell feature
+	function! s:config_fuzzyall(...) abort
+		return extend(copy({
+		\	'converters': [
+		\		incsearch#config#fuzzy#converter(),
+		\		incsearch#config#fuzzyspell#converter()
+		\	],
+		\ }), get(a:, 1, {}))
+	endfunction
+	
+	noremap <silent><expr> z/ incsearch#go(<SID>config_fuzzyall())
+	noremap <silent><expr> z? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
+	noremap <silent><expr> zg? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
+
+"--Plug 'haya14busa/incsearch-easymotion.vim"
+	" easymotion incsearch
+	map e/ <Plug>(incsearch-easymotion-/)
+	"map e? <Plug>(incsearch-easymotion-?)
+	"map eg/ <Plug>(incsearch-easymotion-stay)
+	
+	" incsearch.vim x fuzzy x vim-easymotion
+	function! s:config_easyfuzzymotion(...) abort
+		return extend(copy({
+	    \   'converters': [incsearch#config#fuzzy#converter()],
+	    \   'modules': [incsearch#config#easymotion#module()],
+	    \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+	    \   'is_expr': 0,
+	    \   'is_stay': 1
+	    \ }), get(a:, 1, {}))
+	endfunction
+	
+	noremap <silent><expr> <space>/ incsearch#go(<SID>config_easyfuzzymotion())
+
+"--haya14busa/incsearch-migemo.vim"
+	map <leader>m/ <Plug>(incsearch-migemo-/)
+	map <leader>m? <Plug>(incsearch-migemo-?)
+	map <leader>mg/ <Plug>(incsearch-migemo-stay)
+
+"--neoclide/coc.nvim"
+	" if hidden is not set, TextEdit might fail.
+	set hidden
+	
+	" Some servers have issues with backup files, see #649
+	set nobackup
+	set nowritebackup
+	
+	" Better display for messages
+	set cmdheight=2
+	
+	" You will have bad experience for diagnostic messages when it's default 4000.
+	set updatetime=300
+	
+	" don't give |ins-completion-menu| messages.
+	set shortmess+=c
+	
+	" always show signcolumns
+	set signcolumn=yes
+	
+	" Use tab for trigger completion with characters ahead and navigate.
+	" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+	inoremap <silent><expr> <TAB>
+		\ pumvisible() ? "\<C-n>" :
+		\ <SID>check_back_space() ? "\<TAB>" :
+		\ coc#refresh()
+	inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+	
+	function! s:check_back_space() abort
+		let col = col('.') - 1
+		return !col || getline('.')[col - 1]  =~# '\s'
+	endfunction
+	
+	" Use <c-space> to trigger completion.
+	inoremap <silent><expr> <c-space> coc#refresh()
+	
+	" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+	" Coc only does snippet and additional edit on confirm.
+	inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+	" Or use `complete_info` if your vim support it, like:
+	" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+	
+	" Use `[g` and `]g` to navigate diagnostics
+	nmap <silent> [g <Plug>(coc-diagnostic-prev)
+	nmap <silent> ]g <Plug>(coc-diagnostic-next)
+	
+	" Remap keys for gotos
+	nmap <silent> gd <Plug>(coc-definition)
+	nmap <silent> gy <Plug>(coc-type-definition)
+	nmap <silent> gi <Plug>(coc-implementation)
+	nmap <silent> gr <Plug>(coc-references)
+	
+	" Use K to show documentation in preview window
+	nnoremap <silent> K :call <SID>show_documentation()<CR>
+	
+	function! s:show_documentation()
+	  if (index(['vim','help'], &filetype) >= 0)
+	    execute 'h '.expand('<cword>')
+	  else
+	    call CocAction('doHover')
+	  endif
+	endfunction
+	
+	" Highlight symbol under cursor on CursorHold
+	autocmd CursorHold * silent call CocActionAsync('highlight')
+	
+	" Remap for rename current word
+	nmap <leader>rn <Plug>(coc-rename)
+	
+	" Remap for format selected region
+	xmap <leader>f  <Plug>(coc-format-selected)
+	nmap <leader>f  <Plug>(coc-format-selected)
+	
+	augroup mygroup
+	  autocmd!
+	  " Setup formatexpr specified filetype(s).
+	  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+	  " Update signature help on jump placeholder
+	  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+	augroup end
+	
+	" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+	xmap <leader>a  <Plug>(coc-codeaction-selected)
+	nmap <leader>a  <Plug>(coc-codeaction-selected)
+	
+	" Remap for do codeAction of current line
+	nmap <leader>ac  <Plug>(coc-codeaction)
+	" Fix autofix problem of current line
+	nmap <leader>qf  <Plug>(coc-fix-current)
+	
+	" Create mappings for function text object, requires document symbols feature of languageserver.
+	xmap if <Plug>(coc-funcobj-i)
+	xmap af <Plug>(coc-funcobj-a)
+	omap if <Plug>(coc-funcobj-i)
+	omap af <Plug>(coc-funcobj-a)
+	
+	" Use <C-x> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+	nmap <silent> <C-x> <Plug>(coc-range-select)
+	xmap <silent> <C-x> <Plug>(coc-range-select)
+	
+	" Use `:Format` to format current buffer
+	command! -nargs=0 Format :call CocAction('format')
+	
+	" Use `:Fold` to fold current buffer
+	command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+	
+	" use `:OR` for organize import of current buffer
+	command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+	
+	" Add status line support, for integration with other plugin, checkout `:h coc-status`
+	set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+	
+	" Using CocList
+	" Show all diagnostics
+	nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+	" Manage extensions
+	nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+	" Show commands
+	nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+	" Find symbol of current document
+	nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+	" Search workspace symbols
+	nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+	" Do default action for next item.
+	nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+	" Do default action for previous item.
+	nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+	" Resume latest coc list
+	nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+	" Multi-cursor
+	nmap <silent> <C-e> <Plug>(coc-cursors-word)
+	xmap <silent> <C-e> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
+
+
+"--coc.nvim-plug"
+	let g:coc_global_extensions = [
+				\	'coc-vimlsp',
+				\	'coc-tabnine',
+				\	'coc-snippets',
+				\	'coc-marketplace',
+				\	'coc-html',
+				\	'coc-highlight',
+				\	'coc-explorer',
+				\	'coc-calc',
+				\	'coc-yaml',
+				\	'coc-xml',
+				\	'coc-tsserver',
+				\	'coc-sh',
+				\	'coc-r-lsp',
+				\	'coc-python',
+				\	'coc-phpls',
+				\	'coc-json',
+				\	'coc-java',
+				\	'coc-dictionary',
+				\	'coc-word',
+				\	'coc-emoji',
+				\	'coc-browser',
+				\]
+	"--coc-snippet"
+		" Use <C-l> for trigger snippet expand.
+		imap <C-l> <Plug>(coc-snippets-expand)
+		" Use <C-j> for select text for visual placeholder of snippet.
+		vmap <C-j> <Plug>(coc-snippets-select)
+		" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+		let g:coc_snippet_next = '<c-j>'
+		" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+		let g:coc_snippet_prev = '<c-k>'
+		" Use <C-j> for both expand and jump (make expand higher priority.)
+		imap <C-j> <Plug>(coc-snippets-expand-jump)
+		" Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
+		inoremap <silent><expr> <TAB>
+		    \ pumvisible() ? coc#_select_confirm() :
+		    \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+		    \ <SID>check_back_space() ? "\<TAB>" :
+		    \ coc#refresh()
+		function! s:check_back_space() abort
+		  let col = col('.') - 1
+		  return !col || getline('.')[col - 1]  =~# '\s'
+		endfunction
+		let g:coc_snippet_next = '<tab>'
+
+	"--coc-calc"
+		" append result on current expression
+		nmap <Leader>ca <Plug>(coc-calc-result-append)
+		" replace result on current expression
+		nmap <Leader>cr <Plug>(coc-calc-result-replace))")"
+	
+	"--coc-vimlsp"
+		"document highlight"
+		let g:markdown_fenced_languages = [
+		    \ 'vim',
+		    \ 'help'
+		    \]
+
+"--ludovicchabant/vim-gutentags"
+	" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+	let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+	
+	" 所生成的数据文件的名称
+	let g:gutentags_ctags_tagfile = '.tags'
+	
+	" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+	let s:vim_tags = expand('~/.cache/tags')
+	let g:gutentags_cache_dir = s:vim_tags
+	
+	" 配置 ctags 的参数
+	let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+	let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+	let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+	
+	" 检测 ~/.cache/tags 不存在就新建
+	if !isdirectory(s:vim_tags)
+	   silent! call mkdir(s:vim_tags, 'p')
+	endif
+
+"--prabirshrestha/asyncomplete.vim"
+	""inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+	""inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+	""inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+	""""imap <c-space> <Plug>(asyncomplete_force_refresh)
+	""""set completeopt+=preview "To enable preview window
+	""""autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+	"""vim-lsp:languages setting for asyncomplete.vim"
+	""if executable('pyls')
+	""	" pip install python-language-server
+	""	au User lsp_setup call lsp#register_server({
+	""		\ 'name': 'pyls',
+	""		\ 'cmd': {server_info->['pyls']},
+	""		\ 'whitelist': ['python'],
+	""		\ })
+	""endif
+	""if executable('ccls')
+	""	au User lsp_setup call lsp#register_server({
+	""		\ 'name': 'ccls',
+	""		\ 'cmd': {server_info->['ccls']},
+	""		\ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+	""		\ 'initialization_options': {},
+	""		\ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+	""		\ })
+	""endif
+	"""Register asyncomplete-file.vim"
+	""au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+	""    \ 'name': 'file',
+	""    \ 'whitelist': ['*'],
+	""    \ 'priority': 10,
+	""    \ 'completor': function('asyncomplete#sources#file#completor')
+	""    \ }))
+
+"--sainnhe/vim-color-forest-night"
+	"set termguicolors
+	"colorscheme forest-night
+
+"--lervag/vimtex"
+	let g:tex_flavor = 'latex'
+
+"--puremourning/vimspector"
+	let g:vimspector_enable_mappings = 'HUMAN'
+"--vim-airline/vim-airline"
+	" Automatically displays all buffers when there's only one tab open.
+	let g:airline#extensions#tabline#enabled = 1
+	" buffer operations
+	" go to next buffer
+	map <Leader>bn :bnext<cr>
+	" go to previous buffer
+	map <Leader>bp :bprevious<cr>
+	" close current buffer
+	map <Leader>bd :bdelete<cr>
+	let g:airline_theme='deus'
+
+"--jiangmiao/auto-pairs"
+	" When the filetype is FILETYPE then make AutoPairs only match for parenthesis
+	au Filetype FILETYPE let b:AutoPairs = {"(": ")"}
+	au FileType php      let b:AutoPairs = AutoPairsDefine({'<?' : '?>', '<?php': '?>'})
+"--liuchengxu/graphviz.vim"
+	" How to open the generated output file.
+	" If does not exist, graphviz.vim will automatically choose the right way depending on the platform.
+	let g:graphviz_viewer = 'fim'
+	
+	" Default output format. Default is 'pdf'.
+	let g:graphviz_output_format = 'png'
+	
+	" Options passed on to dot. Default is ''.
+	let g:graphviz_shell_option = ''"
+"--kien/rainbow_parentheses.vim"
+	"au VimEnter * RainbowParenthesesToggle
+	"au Syntax * RainbowParenthesesLoadRound
+	"au Syntax * RainbowParenthesesLoadSquare
+	"au Syntax * RainbowParenthesesLoadBraces
+"--Yggdroot/LeaderF"
+	" don't show the help in normal mode
+	let g:Lf_HideHelp = 1
+	let g:Lf_UseCache = 0
+	let g:Lf_UseVersionControlTool = 0
+	let g:Lf_IgnoreCurrentBufferName = 1
+	" popup mode
+	let g:Lf_WindowPosition = 'popup'
+	let g:Lf_PreviewInPopup = 1
+	let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline"  }
+	let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+	
+	let g:Lf_ShortcutF = "<leader>ff"
+	noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+	noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+	noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+	noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+	
+	noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
+	noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+	" search visually selected text literally
+	xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+	noremap go :<C-U>Leaderf! rg --recall<CR>
+
+	" should use `Leaderf gtags --update` first
+	let g:Lf_GtagsAutoGenerate = 0
+	let g:Lf_Gtagslabel = 'native-pygments'
+	noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+	noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+	noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+	noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+	noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+"--luochen1990/rainbow"
+	let g:rainbow_active = 1
+
+	"" rainbow configuration
+	"let g:rainbow_conf = { 
+	"\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+	"\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+	"\	'guis': [''],
+	"\	'cterms': [''],
+	"\	'operators': '_,_',
+	"\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+	"\	'separately': {
+	"\		'*': {}, 
+	"\		'markdown': {
+	"\		   'parentheses_options': 'containedin=markdownCode contained', 
+	"\		},
+	"\		'lisp': {
+	"\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'], 
+	"\		},
+	"\		'haskell': {
+	"\			'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/\v\{\ze[^-]/ end=/}/ fold'], 
+	"\		},
+	"\		'vim': {
+	"\			'parentheses_options': 'containedin=vimFuncBody', 
+	"\		},
+	"\		'perl': {
+	"\			'syn_name_prefix': 'perlBlockFoldRainbow', 
+	"\		},
+	"\		'stylus': {
+	"\			'parentheses': ['start=/{/ end=/}/ fold contains=@colorableGroup'], 
+	"\		},
+	"\		'css': 0, 
+	"\	}
+	"\}
+	
+	
+	"" rainbownify csv
+	"let s:rainbow_conf = {
+	"\	'separately': {
+	"\		'csv': {
+	"\			'parentheses': ['start=/\v[^,]+|(,\ze,)/ step=/\v\,/ end=/$/ keepend'],
+	"\			}
+	"\		}
+	"\	}
+
+"--mechatroner/rainbow_csv"
+	"" detect csv dialects
+	"autocmd BufNewFile,BufRead *.csv   set filetype=csv_semicolon
+	"autocmd BufNewFile,BufRead *.dat   set filetype=csv_pipe
+
+	" disable default key mappings
+	let g:disable_rainbow_key_mappings = 1
+
+"--skywind3000/quickmenu.vim"
+	"" choose a favorite key to show/hide quickmenu
+	"noremap <silent>qm :call quickmenu#toggle(0)<cr>
+	
+	" enable cursorline (L) and cmdline help (H)
+	let g:quickmenu_options = "HL"
+	
+"--nathanaelkane/vim-indent-guides"
+	" have indent guides enabled by default
+	let g:indent_guides_enable_on_vim_startup = 1
+
+	"" Setting custom indent colors
+	"let g:indent_guides_auto_colors = 0
+	"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+	"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+
+"--dense-analysis/ale"
+	" In ~/.vim/vimrc, or somewhere similar.
+	let g:ale_fixers = {
+	\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+	\   'javascript': ['eslint'],
+	\	'c': ['clang-format'],
+	\}
+
+"--FooSoft/vim-argwrap"
+	"nnoremap <silent> <leader>a :ArgWrap<CR>
+
+"--sheerun/vim-polyglot"
+
+
+"--kshenoy/vim-signature"
+      let g:SignatureMap = {
+        \ 'Leader'             :  "m",
+        \ 'PlaceNextMark'      :  "m,",
+        \ 'ToggleMarkAtLine'   :  "m.",
+        \ 'PurgeMarksAtLine'   :  "m-",
+        \ 'DeleteMark'         :  "dm",
+        \ 'PurgeMarks'         :  "m<Space>",
+        \ 'PurgeMarkers'       :  "m<BS>",
+        \ 'GotoNextLineAlpha'  :  "']",
+        \ 'GotoPrevLineAlpha'  :  "'[",
+        \ 'GotoNextSpotAlpha'  :  "`]",
+        \ 'GotoPrevSpotAlpha'  :  "`[",
+        \ 'GotoNextLineByPos'  :  "]'",
+        \ 'GotoPrevLineByPos'  :  "['",
+        \ 'GotoNextSpotByPos'  :  "]`",
+        \ 'GotoPrevSpotByPos'  :  "[`",
+        \ 'GotoNextMarker'     :  "]-",
+        \ 'GotoPrevMarker'     :  "[-",
+        \ 'GotoNextMarkerAny'  :  "]=",
+        \ 'GotoPrevMarkerAny'  :  "[=",
+        \ 'ListBufferMarks'    :  "m/",
+        \ 'ListBufferMarkers'  :  "m?"
+        \ }
+
+"--liuchengxu/vim-which-key"
+	let g:mapleader = "\<BSlash>"
+	let g:maplocalleader = ','
+	nnoremap <silent> <leader>      :<c-u>WhichKey '<BSlash>'<CR>
+	nnoremap <silent> <localleader> :<c-u>WhichKey ','<CR>
+
+	" Register the description dictionary for the prefix <Space>
+	call which_key#register('<Space>', "g:which_key_space_map")
+	nnoremap <silent> <Space> :<c-u>WhichKey '<Space>'<CR>
+	vnoremap <silent> <Space> :<c-u>WhichKeyVisual '<Space>'<CR>
+	" add items to g:which_key_map:
+	" Define prefix dictionary
+	let g:which_key_space_map =  {}
+"--ntpeters/vim-better-whitespace"
+	let g:better_whitespace_operator='_s'
+
+
+
+"----------------------------------------------------------------------------"
+"User_function"
+
+"User_function_setting"
+
+"----------------------------------------------------------------------------"
+
+
+"----------------------------------------------------------------------------"
+
+"normal setting"
+	set nu
+	set rnu
+	set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+	set termencoding=utf-8
+	set encoding=utf-8
+	syntax enable
+	"" 检查单词拼写
+	"set spell!
+	"" 允许读取系统剪切板
+	"set clipboard=unnamed
+	set foldmethod=indent
+	"set foldmethod=syntax
+	"inoremap ' ''<LEFT>
+	"inoremap " ""<LEFT>
+	"inoremap ( ()<LEFT>
+	"inoremap [ []<LEFT>
+	"inoremap { {<CR>}<UP><ESC>A<TAB>
+	"jump out the ()[]""
+	
+	" 使vim支持真彩色
+	"set termguicolors
+	" 使vim支持鼠标
+	"set mouse=a
+	" 打开/正则搜索即可匹配
+	set incsearch
+	" 打开/正则搜索高亮
+	set hlsearch
+	" ignorecase smartcase both on
+	set ignorecase
+	set smartcase
+	"" 打开行列高亮
+	"set cursorline
+	"set cursorcolumn
+
+	set autoindent
+	set cindent
+	set shiftwidth=4
+	set softtabstop=4
+	set tabstop=4
+	
+	"ctags配置"
+	set tags=./.tags;,.tags
+
+	"Cursor_Settings"
+	"" set cursorcolumn "高亮当前列 cuc
+	"" set cursorline "高亮当前行 cul
+	" at least n line above/below the cursor.
+	set scrolloff=5
+
+	"GUI_Cursor_Settings_for_GVim"
+	""au InsertLeave * hi Cursor guibg=red "插入模式时是红色
+	""au InsertEnter * hi Cursor guibg=green "离开插入模式时是绿色
