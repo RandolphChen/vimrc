@@ -129,8 +129,9 @@ call plug#begin('~/.vim/plugged')
 	Plug 'liuchengxu/vim-which-key'
 	Plug 'mg979/vim-visual-multi'
 	Plug 'ntpeters/vim-better-whitespace'
+	Plug 'junegunn/vim-easy-align'
 
-	
+
 call plug#end()
 
 "--Plugin setting
@@ -694,7 +695,7 @@ call plug#end()
 	\}
 
 "--FooSoft/vim-argwrap"
-	"nnoremap <silent> <leader>a :ArgWrap<CR>
+	nnoremap <silent> <space>wa :ArgWrap<CR>
 
 "--sheerun/vim-polyglot"
 
@@ -739,6 +740,13 @@ call plug#end()
 	let g:which_key_space_map =  {}
 "--ntpeters/vim-better-whitespace"
 	let g:better_whitespace_operator='_s'
+
+"--junegunn/vim-easy-align"
+	" Start interactive EasyAlign in visual mode (e.g. vipga)
+	xmap <space>ea <Plug>(EasyAlign)
+
+	" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+	nmap <space>ea <Plug>(EasyAlign)
 
 
 
