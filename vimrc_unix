@@ -133,6 +133,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'godlygeek/tabular'
 	Plug 'vim-scripts/VimIM'
 	Plug 'dongyuwei/vimim-data'
+	Plug 'embear/vim-localvimrc'
 
 
 call plug#end()
