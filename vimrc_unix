@@ -308,9 +308,9 @@ call plug#end()
 	" if hidden is not set, TextEdit might fail.
 	set hidden
 	
-	" Some servers have issues with backup files, see #649
-	set nobackup
-	set nowritebackup
+	"" Some servers have issues with backup files, see #649
+	"set nobackup
+	"set nowritebackup
 	
 	" Better display for messages
 	set cmdheight=2
@@ -759,6 +759,8 @@ call plug#end()
 "--embear/vim-localvimrc"
 	let g:localvimrc_file_directory_only=1
 	let g:localvimrc_sandbox=0
+	"let g:localvimrc_ask=0
+	"let g:localvimrc_blacklist=
 
 "--ZSaberLv0/ZFVimIM"
 	"function! s:myLocalDb()
@@ -835,12 +837,24 @@ call plug#end()
 	"ctags配置"
 	set tags=./.tags;,.tags
 
+	" Backup your vimrc configuration before you write it
+	" configuration from https://gist.github.com/nepsilon/003dd7cfefc20ce1e894db9c94749755
+	" Turn on backup option
+	set backup
+	" Where to store backups
+	set backupdir=~/.vim/backup/
+	" Make backup before overwriting the current buffer
+	set writebackup
+	" Overwrite the original backup file
+	set backupcopy=yes
+	" Meaningful backup name, ex: filename@2015-04-05.14:59
+	au BufWritePre .vimrc let &bex = '@' . strftime("%F.%H:%M")
+
 	"Cursor_Settings"
 	"" set cursorcolumn "高亮当前列 cuc
 	"" set cursorline "高亮当前行 cul
 	" at least n line above/below the cursor.
 	set scrolloff=5
-
 	"GUI_Cursor_Settings_for_GVim"
 	""au InsertLeave * hi Cursor guibg=red "插入模式时是红色
 	""au InsertEnter * hi Cursor guibg=green "离开插入模式时是绿色
