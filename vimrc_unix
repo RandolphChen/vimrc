@@ -752,6 +752,10 @@ call plug#end()
 	" Start interactive EasyAlign for a motion/text object (e.g. gaip)
 	nmap <space>ea <Plug>(EasyAlign)
 
+"--embear/vim-localvimrc"
+	let g:localvimrc_file_directory_only=1
+	let g:localvimrc_sandbox=0
+
 
 
 "----------------------------------------------------------------------------"
