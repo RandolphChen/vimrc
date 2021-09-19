@@ -131,9 +131,13 @@ call plug#begin('~/.vim/plugged')
 	Plug 'ntpeters/vim-better-whitespace'
 	Plug 'junegunn/vim-easy-align'
 	Plug 'godlygeek/tabular'
-	Plug 'vim-scripts/VimIM'
-	Plug 'dongyuwei/vimim-data'
+	"Plug 'vim-scripts/VimIM'
+	"Plug 'dongyuwei/vimim-data'
 	Plug 'embear/vim-localvimrc'
+	Plug 'ZSaberLv0/ZFVimIM'
+	Plug 'ZSaberLv0/ZFVimJob'
+	Plug 'ZSaberLv0/ZFVimGitUtil'
+	Plug 'RandolphChen/ZFVimIM_vimim-nature',{'branch':'origin/release'}
 
 
 call plug#end()
@@ -755,6 +759,25 @@ call plug#end()
 "--embear/vim-localvimrc"
 	let g:localvimrc_file_directory_only=1
 	let g:localvimrc_sandbox=0
+
+"--ZSaberLv0/ZFVimIM"
+	"function! s:myLocalDb()
+    "let db = ZFVimIM_dbInit({
+    "            \   'name' : 'YourDb',
+    "            \ })
+    "call ZFVimIM_cloudRegister({
+    "            \   'mode' : 'local',
+    "            \   'dbId' : db['dbId'],
+    "            \   'repoPath' : '/path/to/repo',
+    "            \   'dbFile' : '/YourDbFile',
+    "            \   'dbCountFile' : '/YourDbCountFile',
+    "            \ })
+	"endfunction
+	"autocmd User ZFVimIM_event_OnDbInit call s:myLocalDb()
+
+	"let g:zf_git_user_email=''
+	"let g:zf_git_user_name=''
+	"let g:zf_git_user_token=''
 
 
 
