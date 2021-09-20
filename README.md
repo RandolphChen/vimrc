@@ -10,7 +10,8 @@ the mainly requirements of some plugins can be found in the link below:
 
 ### vim-plug to manage vim plugin
 
-[junegunn/vim-plug](https://github.com/junegunn/vim-plug)
+* [junegunn/vim-plug](https://github.com/junegunn/vim-plug)
+
 > After you install vim-plug, you can use the command below to install the other
 > plugins automatically
 
@@ -20,4 +21,4 @@ the mainly requirements of some plugins can be found in the link below:
 
 ### plugin for completion
 
-[neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
+* [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
