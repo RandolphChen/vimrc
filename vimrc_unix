@@ -19,6 +19,8 @@ call plug#begin('~/.vim/plugged')
 		"Plug 'wannesm/wmgraphviz.vim'
 		Plug 'liuchengxu/graphviz.vim'
 		Plug 'skywind3000/vim-auto-popmenu'
+		"++ vim snippets engine
+			Plug 'SirVer/ultisnips'
 		"++ vim input method
 			Plug 'ZSaberLv0/ZFVimIM'
 			Plug 'ZSaberLv0/ZFVimJob'
@@ -462,6 +464,8 @@ call plug#end()
 			let g:coc_snippet_prev = '<c-k>'
 			" Use <C-j> for both expand and jump (make expand higher priority.)
 			imap <C-j> <Plug>(coc-snippets-expand-jump)
+			" Use <leader>x for convert visual selected code to snippet
+			xmap <leader>x  <Plug>(coc-convert-snippet)
 			" Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
 			inoremap <silent><expr> <TAB>
 			    \ pumvisible() ? coc#_select_confirm() :
@@ -486,6 +490,7 @@ call plug#end()
 			    \ 'vim',
 			    \ 'help'
 			    \]
+
 
 	"-- "ludovicchabant/vim-gutentags"
 		" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
@@ -701,7 +706,6 @@ call plug#end()
 		nnoremap <silent> <space>aw :ArgWrap<CR>
 
 	"-- "sheerun/vim-polyglot"
-
 
 	"-- "kshenoy/vim-signature"
 	      let g:SignatureMap = {
